@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+
+   
+        $.get("https://jsonplaceholder.typicode.com/posts", function(data, status){
+            console.log("Data: " + data.length + "\nStatus: " + status);
+
+            var onlyUserIdbt50and100Array = data.filter(function(item){
+
+                if(item.id >= 50 && item.id <= 100)
+                {
+                    
+                    return item;
+                }
+
+
+            });
+            console.log(onlyUserIdbt50and100Array.length);
+            console.log(onlyUserIdbt50and100Array);
+       
+
+for (var i = 0; i < onlyUserIdbt50and100Array.length ; i++){
+    
+    $("<tr>").appendTo($("#addDynamically"))      
+    .append('<td>' + onlyUserIdbt50and100Array[i].userId + '</td>')  
+    .append('<td>' + onlyUserIdbt50and100Array[i].id + '</td>')
+    .append('<td>' + onlyUserIdbt50and100Array[i].title + '</td>')
+    .append('<td>' + onlyUserIdbt50and100Array[i].body + '</td>')
+    
+}
+        });
+    });
+    
+
+
+</script>
+<style>
+   
+</style>
+</head>
+<body>
+
+
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+    <tbody id="addDynamically">
+     
+    </tbody>
+  </table>
+
+</body>
+</html>
